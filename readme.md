@@ -1,4 +1,4 @@
-# MUD Magic Server
+# Realm Walker (MUD)
 
 A basic Multi-User Dungeon (MUD) server implemented in Node.js, providing a text-based adventure game.
 
