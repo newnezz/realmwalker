@@ -15,7 +15,7 @@ const server = net.createServer((socket) => {
   socket.write(ansiColors.reset); // clear screen
   socket.write(`${ansiColors.fgCyan}
   *******************************
-  * * * * * MUD MAGIC * * * * * *
+   * * * * REALM WALKER * * * * 
   *******************************
   v1.0 - 2/1/24 ${ansiColors.default}
 `);
