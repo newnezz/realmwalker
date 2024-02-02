@@ -19,7 +19,7 @@ const server = net.createServer((socket) => {
   *******************************
   v1.0 - 2/1/24 ${ansiColors.default}
 `);
-  // LOGIC FOR CREATION / LOGIN HERE
+  // LOGIC FOR CREATION / LOGIN HERE 
   // login()
 
   // Send a welcome message to the connected player
