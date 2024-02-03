@@ -2,6 +2,7 @@ const express = require("express");
 const { MongoClient } = require("mongodb");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
+
 const app = express();
 const PORT = 3005;
 const uri = "mongodb://127.0.0.1:27017";
@@ -9,6 +10,7 @@ const client = new MongoClient(uri);
 const db = client.db("mud_game");
 const usersCollection = db.collection("users");
 app.use(bodyParser.json());
+
 async function run() {
   app.post("/authenticate", async (req, res) => {
     const { action, username, password } = req.body;
