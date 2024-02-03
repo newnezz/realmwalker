@@ -25,38 +25,48 @@ A basic Multi-User Dungeon (MUD) server implemented in Node.js, providing a text
 
 2. Navigate to the project directory
 
-    ```bash
-    cd mud-magic-server
-    ```
+   ```bash
+   cd mud-magic-server
+   ```
+
 3. Install dependencies
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 ## Usage
+
 1. Start the server
-    ```bash
-    node server.js
-    ```
+   ```bash
+   node server.js
+   ```
 2. Connect to the server using a Telnet client or Mudlet.
 3. Enjoy the text based adventure!
 
-
 ## Commands
+
 ### Movement:
+
 - north: Move north.
 - south: Move south.
 - east: Move east.
 - west: Move west.
+
 #### Senses:
+
 - look: Look around the current location.
+
 ### Utility:
+
 - who: Check the number of players online.
 - quit: Quit the game.
+
 ### Chat:
+
 - Send messages to other players by typing your message.
 
 ## Contributing
+
 If you'd like to contribute to the project, please follow these guidelines:
 
 1. Fork the repository.
@@ -66,4 +76,5 @@ If you'd like to contribute to the project, please follow these guidelines:
 5. Submit a pull request.
 
 ## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.

@@ -2,7 +2,7 @@ const net = require("net");
 const townInfo = require("./locations");
 // const login = require('./login')
 const ansiColors = require("./ansicolors");
-const Chance = require('chance');
+const Chance = require("chance");
 
 let connections = [];
 
@@ -11,7 +11,7 @@ const server = net.createServer((socket) => {
   const randomName = chance.name();
   console.log("New connection!");
   connections.push(socket);
-  socket.location = {x:0, y:0}
+  socket.location = { x: 0, y: 0 };
   socket.write(ansiColors.reset); // clear screen
   socket.write(`${ansiColors.fgCyan}
   *******************************
@@ -19,7 +19,7 @@ const server = net.createServer((socket) => {
   *******************************
   v1.0 - 2/1/24 ${ansiColors.default}
 `);
-  // LOGIC FOR CREATION / LOGIN HERE 
+  // LOGIC FOR CREATION / LOGIN HERE
   // login()
 
   // Send a welcome message to the connected player
@@ -35,42 +35,77 @@ const server = net.createServer((socket) => {
     switch (data) {
       // MOVEMENT
       case "north":
-        if (townInfo.filter(location => location.x == socket.location.x && location.y == socket.location.y + 1).length == 0) {
-            socket.write(`${ansiColors.fgRed}There is nothing in that direction.\n`)
+        if (
+          townInfo.filter(
+            (location) =>
+              location.x == socket.location.x &&
+              location.y == socket.location.y + 1,
+          ).length == 0
+        ) {
+          socket.write(
+            `${ansiColors.fgRed}There is nothing in that direction.\n`,
+          );
         } else {
-            socket.write(`You attempt to head north.\n`);
-            socket.location.y++
+          socket.write(`You attempt to head north.\n`);
+          socket.location.y++;
         }
         break;
       case "south":
-        if (townInfo.filter(location => location.x == socket.location.x && location.y == socket.location.y - 1).length == 0) {
-            socket.write(`${ansiColors.fgRed}There is nothing in that direction.\n`)
+        if (
+          townInfo.filter(
+            (location) =>
+              location.x == socket.location.x &&
+              location.y == socket.location.y - 1,
+          ).length == 0
+        ) {
+          socket.write(
+            `${ansiColors.fgRed}There is nothing in that direction.\n`,
+          );
         } else {
-            socket.write(`You attempt to head south.\n`);
-            socket.location.y--
+          socket.write(`You attempt to head south.\n`);
+          socket.location.y--;
         }
         break;
       case "east":
-        if (townInfo.filter(location => location.x == socket.location.x + 1 && location.y == socket.location.y).length == 0) {
-            socket.write(`${ansiColors.fgRed}There is nothing in that direction.\n`)
+        if (
+          townInfo.filter(
+            (location) =>
+              location.x == socket.location.x + 1 &&
+              location.y == socket.location.y,
+          ).length == 0
+        ) {
+          socket.write(
+            `${ansiColors.fgRed}There is nothing in that direction.\n`,
+          );
         } else {
-            socket.write(`You attempt to head east.\n`);
-            socket.location.x++
+          socket.write(`You attempt to head east.\n`);
+          socket.location.x++;
         }
         break;
       case "west":
-        if (townInfo.filter(location => location.x == socket.location.x - 1 && location.y == socket.location.y + 1).length == 0) {
-            socket.write(`${ansiColors.fgRed}There is nothing in that direction.${ansiColors.default}\n`)
+        if (
+          townInfo.filter(
+            (location) =>
+              location.x == socket.location.x - 1 &&
+              location.y == socket.location.y + 1,
+          ).length == 0
+        ) {
+          socket.write(
+            `${ansiColors.fgRed}There is nothing in that direction.${ansiColors.default}\n`,
+          );
         } else {
-            socket.write(`You attempt to head west.\n`);
-            socket.location.x--
+          socket.write(`You attempt to head west.\n`);
+          socket.location.x--;
         }
         break;
       // SENSES
       case "look":
         socket.write(`${ansiColors.dim}You look around.\n`);
-        let spot = townInfo.filter(location => location.x == socket.location.x && location.y == socket.location.y)
-        socket.write(`${spot[0].desc}`)
+        let spot = townInfo.filter(
+          (location) =>
+            location.x == socket.location.x && location.y == socket.location.y,
+        );
+        socket.write(`${spot[0].desc}`);
         break;
       // UTILITY
       case "who":
@@ -84,12 +119,14 @@ const server = net.createServer((socket) => {
       default:
         connections.forEach((connection) => {
           if (socket != connection) {
-            connection.write(`${ansiColors.fgBlue}${randomName}:${ansiColors.default}${data}\n`);
+            connection.write(
+              `${ansiColors.fgBlue}${randomName}:${ansiColors.default}${data}\n`,
+            );
           }
         });
         break;
     }
-    console.log(socket.location)
+    console.log(socket.location);
   });
 
   // Handle disconnection

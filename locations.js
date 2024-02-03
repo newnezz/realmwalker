@@ -1,4 +1,4 @@
-const ansiColors = require('./ansicolors')
+const ansiColors = require("./ansicolors");
 
 const townInfo = [
   {
